@@ -20,3 +20,12 @@ output "result" {
 output "short" {
   value = format("Login: %s / pass: %s", local.student.login, local.student.pass)
 }
+
+output "cloudinit-feed" {
+  value = {
+    user    = local.student.login
+    pass    = local.student.pass
+    ssh_prv = tls_private_key.student_sshkey.private_key_pem
+    ssh_pub = tls_private_key.student_sshkey.public_key_openssh
+  }
+}
