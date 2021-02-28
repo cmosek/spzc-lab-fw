@@ -1,9 +1,9 @@
-data "template_file" "userdata_fw" {
-  template = file("cloud-inits/fw/userdata.tpl.yaml")
-  vars = {
-    packages = jsonencode(var.packages_fw)
-  }
-}
+# data "template_file" "userdata_fw" {
+#   template = file("${path.module}/cloud-inits/fw/userdata.tpl.yaml")
+#   vars = {
+#     packages = jsonencode(var.packages_fw)
+#   }
+# }
 data "template_file" "metadata_fw" {
   template = file("cloud-inits/fw/metadata.tpl.yaml")
   vars = {
@@ -16,7 +16,7 @@ data "template_file" "metadata_fw" {
 
 # Render a multi-part cloud-init config making use of the part
 # above, and other source files
-data "template_cloudinit_config" "config_fw" {
+data "cloudinit_config" "config_fw" {
   gzip          = true
   base64_encode = true
 
@@ -24,7 +24,8 @@ data "template_cloudinit_config" "config_fw" {
   part {
     filename     = "init.cfg"
     content_type = "text/cloud-config"
-    content      = data.template_file.userdata_fw.rendered
+    content = templatefile("${path.module}/cloud-inits/fw/userdata.tpl.yaml",
+    { packages = jsonencode(var.packages_fw) })
   }
 
   #   part {
