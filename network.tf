@@ -13,6 +13,9 @@ resource "esxi_portgroup" "pg_mgmt" {
 #}
 
 resource "esxi_vswitch" "vs_ext" {
-  name   = "vs_ext"
-  uplink = [var.ext_uplink_nic]
+  name = "vs_ext"
+  uplink {
+    name = var.ext_uplink_nic
+  }
+}
 }
