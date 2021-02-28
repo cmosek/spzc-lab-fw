@@ -8,25 +8,22 @@
 
 | Name | Version |
 |------|---------|
+| cloudinit | n/a |
 | esxi | 1.8.1 |
 | random | n/a |
 | template | n/a |
 | tls | n/a |
 
-## Modules
-
-No Modules.
-
 ## Resources
 
 | Name |
 |------|
+| [cloudinit_config](https://registry.terraform.io/providers/hashicorp/cloudinit/latest/docs/data-sources/config) |
 | [esxi_guest](https://registry.terraform.io/providers/josenk/esxi/1.8.1/docs/resources/guest) |
 | [esxi_portgroup](https://registry.terraform.io/providers/josenk/esxi/1.8.1/docs/resources/portgroup) |
 | [esxi_resource_pool](https://registry.terraform.io/providers/josenk/esxi/1.8.1/docs/resources/resource_pool) |
 | [esxi_vswitch](https://registry.terraform.io/providers/josenk/esxi/1.8.1/docs/resources/vswitch) |
 | [random_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) |
-| [template_cloudinit_config](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/cloudinit_config) |
 | [template_file](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) |
 | [tls_private_key](https://registry.terraform.io/providers/hashicorp/tls/latest/docs/resources/private_key) |
 
