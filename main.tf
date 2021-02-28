@@ -56,7 +56,7 @@ resource "esxi_guest" "vm_fw01" {
   guestinfo = {
     "metadata"          = base64gzip(data.template_file.metadata_fw.rendered)
     "metadata.encoding" = "gzip+base64"
-    "userdata"          = data.template_cloudinit_config.config_fw.rendered
+    "userdata"          = data.cloudinit_config.config_fw.rendered
     "user.encoding"     = "gzip+base64"
   }
 
