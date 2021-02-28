@@ -1,0 +1,16 @@
+instance-id: bastion-vm
+local-hostname: bastion
+network:
+  version: 2
+  ethernets:
+    interface0:
+      match:
+        mac_address: "00:50:56:FF:21:37"
+      set-name: ext
+      addresses:
+        - 192.168.1.10/24
+      gateway4: 192.168.1.254
+      nameservers: 
+        addresses: [8.8.8.8]
+        
+  

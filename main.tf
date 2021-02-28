@@ -6,7 +6,7 @@ resource "esxi_resource_pool" "net_vms" {
   resource_pool_name = "rp_net_vms"
 }
 
-resource "esxi_guest" "vmtest" {
+resource "esxi_guest" "vm_bastion" {
   guest_name = "bastion"
   disk_store = var.esxi_diskstore
 
@@ -20,6 +20,13 @@ resource "esxi_guest" "vmtest" {
       "vs_ext",
       "vs_mgmt"
     ]
+    mac_address = "00:50:56:FF:21:37"
+  }
+
+  ### CLOUD-INIT
+  guestinfo = {
+    "metadata"          = base64gzip(file("${var.guest_name}-metadata.cfg"))
+    "metadata.encoding" = "gzip+base64"
   }
 
 }

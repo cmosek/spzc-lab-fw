@@ -1,0 +1,42 @@
+#cloud-config
+
+# Add groups to the system
+
+groups:
+  - students: []
+  - masters: [wmazurcz, kowalmik]
+
+# Add users to the system. Users are added after groups are added.
+users:
+  - default
+  - name: kowalmik
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: wheel
+    ssh_authorized_keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGbJVZNm1bCkgHgN5986bMIbWtdafuQUDNyy8VMyWggF cmos@szezlong
+
+
+
+# final_message
+# default: cloud-init boot finished at $TIMESTAMP. Up $UPTIME seconds
+# this message is written by cloud-final when the system is finished
+# its first boot
+final_message: "The system is finally up, after $UPTIME seconds"
+
+
+# Update apt database on first boot (run 'apt-get update').
+# Note, if packages are given, or package_upgrade is true, then
+# update will be done independent of this setting.
+#
+# Default: false
+# Aliases: apt_update
+package_update: true
+
+
+
+# Upgrade the instance on first boot
+# (ie run apt-get upgrade)
+#
+# Default: false
+# Aliases: apt_upgrade
+package_upgrade: true
