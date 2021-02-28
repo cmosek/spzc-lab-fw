@@ -18,3 +18,8 @@ variable "bastion_ext_ip" {
 variable "ext_uplink_nic" {
   description = "Karta sieciowa w dostępna z zewnątrz"
 }
+
+
+variable "packages_fw" {
+  default = ["ssh", "iptables"]
+}

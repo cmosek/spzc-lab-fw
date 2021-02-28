@@ -1,0 +1,23 @@
+instance-id: ${vm_name}-vm
+local-hostname: ${vm_name}
+network:
+  version: 2
+  ethernets:
+    interface0:
+      match:
+        name: enp0*
+      set-name: lab
+      addresses:
+        - ${vm_lab_ip}/24
+    interface1:
+      match:
+        name: enp1*
+      set-name: srv
+      addresses:
+        - ${vm_srv_ip}/24
+    interface2:
+      match:
+        name: enp2*
+      set-name: mgmt
+      addresses:
+        - ${vm_mgmt_ip}/24
