@@ -1,3 +1,23 @@
+
+# Generate unique ID, IP address, sshkey and pass for students
+module "student" {
+  source = "./student"
+  count  = var.seat_count
+  # student_count = var.seat_count
+  seat_index = count.index
+}
+
+output "lista_prowadzacego" {
+  value = module.student[*].result
+}
+
+output "lista_studencka" {
+  value = module.student[*].short
+}
+
+# Generate vm's
+
+
 resource "esxi_resource_pool" "test_vms" {
   resource_pool_name = "rp_test_vms"
 }

@@ -24,3 +24,8 @@ variable "packages_fw" {
   default     = ["ssh", "iptables"]
   description = "Oprogramowanie zainstalowane na hostach FW"
 }
+
+
+variable "seat_count" {
+  description = "Ilość stanowisk laboratorium"
+}
