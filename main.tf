@@ -25,8 +25,10 @@ resource "esxi_guest" "vm_bastion" {
 
   ### CLOUD-INIT
   guestinfo = {
-    "metadata"          = base64gzip(file("${var.guest_name}-metadata.cfg"))
+    "metadata"          = base64gzip(file("cloud-inits/${vm_bastion.guest_name}/metadata.yaml"))
     "metadata.encoding" = "gzip+base64"
+    "userdata"          = base64gzip(file("cloud-inits/${vm_bastion.guest_name}/userdata.yaml"))
+    "userdata.encoding" = "gzip+base64"
   }
 
 }
